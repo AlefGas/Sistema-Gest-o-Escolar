@@ -7,7 +7,7 @@ Sistema de gestão escolar
 - [ ] Crud de Alunos
 - [ ] Crud de Matrículas
 - [ ] Crud de Funcionários
-- [ ] Autencticacao
+- [ ] Autenticação
 - [ ] Dashboard
 
 ## Documentação
@@ -24,7 +24,7 @@ Sistema de gestão escolar
 
 `GET` /alunos
 
-Retorna um Array com todas as categorias do Usuário
+Retorna um Array com todos os alunos
 
 #### Exemplo de resposta
 
@@ -44,13 +44,13 @@ Retorna um Array com todas as categorias do Usuário
 |código| descrição|
 |------|----------|
 |200| Aluno retornado com sucesso
-|401| Autorizado não autorizado. Realize a autenticação em /login
+|401| Não autorizado. Realize a autenticação em /login
 
 ### Cadastrar Alunos
 
 `POST` /alunos
 
-Cadastro um aluno com o corpo de uma requisição
+Cadastrar um aluno com o corpo de uma requisição
 
 #### Corpo da requisição
 
@@ -82,12 +82,12 @@ Cadastro um aluno com o corpo de uma requisição
 |------|---------|
 |200| Aluno cadastrado com sucesso
 |400| Validação falhou. Verifique os dados enviados no corpo da requisição
-|401| não Autorizado. Realize a autenticação em /login
+|401| Não autorizado. Realize a autenticação em /login
 
 
 ### Apagar Alunos
 
-`DELETE` /categoria/`{id}`
+`DELETE` /aluno/`{id}`
 
 Apaga a categoria com o `id` informado no parâmetro de path.
 
