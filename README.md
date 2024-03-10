@@ -1,61 +1,169 @@
-# Sistema-Gest-o-Escolar
+# Sistema-Gestão-Escolar
+
 Sistema de gestão escolar 
 
 ## Requisitos
 
--[] Crud De Alunos
--[] Crud de professores
--[] Crud de Coodernadores 
--[] Autencticacao
--[] Dashboard
-## Documentação
+- [ ] Crud de Alunos
+- [ ] Crud de Matrículas
+- [ ] Crud de Funcionários
+- [ ] Autenticação
+- [ ] Dashboard
 
+## Documentação
 
 ### Endpoints
 
--Listar Categoria
--Apagar Categoria
--Detalhar Categoria
--Cadastrar Categoria
--Atualizar Categoria
+- [Listar Alunos](#listar-alunos)
+- [Cadastrar Alunos](#cadastrar-alunos)
+- [Detalhar Alunos](#detalhar-alunos)
+- [Apagar Alunos](#apagar-alunos)
+- [Atualizar Alunos](#atualizar-alunos)
 
-### Listar Categorias
+### Listar Alunos
 
-'GET'/Categoria
+`GET` /alunos
 
-Retorna um Array com todas as categorias do Usuario
+Retorna um Array com todos os alunos
 
 #### Exemplo de resposta
 
+```js
+[
+    {
+        "RM": 1,
+        "nome": "Pedro",
+        "turma": "A"
+    }
+]
+```
+
+
+#### Códigos de resposta
+
 |código| descrição|
 |------|----------|
-|200| Categoria retornada com sucesso
-|401| Autorizado não autorizado. realize a autenticação em /login
+|200| Aluno retornado com sucesso
+|401| Não autorizado. Realize a autenticação em /login
 
-### Cadastrar Categoria 
-'POST' /CATEGORIA
+### Cadastrar Alunos
 
-Cadastro de uma categoria com o corpo de uma requisição
+`POST` /alunos
+
+Cadastrar um aluno com o corpo de uma requisição
 
 #### Corpo da requisição
-|Campo|tipo|Obrigatorio|descrição|
-|-----|----|-----------|---------|
-|nome| String| Sim     | um nome curto para identificar a categoria
-|icone|String|X        |O nome do icone conforme biblioteca materia lIcons
 
+|campo|tipo|obrigatório|descrição|
+|-----|----|:-----------:|---------|
+|nome|string|✅|Nome do aluno matriculado
+|turma|string|✅|Turma do aluno respectivo
 
-#### Codigo de Resposta
+```js
+{
+    "nome": "Pedro",
+    "turma": "A"
+}
+```
 
-|201| Categoria Cadastrada com sucesso
+#### Exemplo da resposta
+
+```js
+{
+    "RM": 1,
+    "nome": "Pedro",
+    "turma": "A"
+}
+```
+
+#### Códigos de Resposta
+
+|código|descrição|
+|------|---------|
+|200| Aluno cadastrado com sucesso
 |400| Validação falhou. Verifique os dados enviados no corpo da requisição
-|401| não Autorizado. Realize a autenticação em /login
-
-### Detalhar Categoria
-
-'GET' /CATEGORIA
-
-Retorna um objeto com uma categoria por id
-#### Corpo da requisição
+|401| Não autorizado. Realize a autenticação em /login
 
 
+### Apagar Alunos
 
+`DELETE` /aluno/`{id}`
+
+Apaga a categoria com o `id` informado no parâmetro de path.
+
+
+#### Códigos de Resposta
+
+|código|descrição|
+|------|---------|
+|201| Aluno apagado com sucesso
+|401| Não autorizado. Realize a autenticação em /login
+
+
+
+### Detalhar Alunos
+
+`GET` /alunos/`{id}`
+
+Retorna os dados do aluno com o `id` informado no parâmetro de path.
+
+#### Exemplo da Resposta
+
+```js
+// requisição /aluno/1
+{
+    "RM": 1,
+    "Nome": "Pedro",
+    "Turma": "A"
+}
+```
+
+#### Código de Resposta
+
+|código|descrição|
+|------|---------|
+|204| Aluno retornado com sucesso
+|401| Não autorizado. Realize a autenticação em /login
+|404| Não existe categoria com o `id` informado
+
+
+### Atualizar Alunos
+
+`PUT` /aluno/`{id}`
+
+Atualiza os dados da categoria com o `id` informado na path.
+
+#### Corpo da Requisição
+
+|campo|tipo|obrigatório|descrição|
+|-----|----|:-----------:|---------|
+|nome|string|✅|nome do aluno matriculado
+|turma|string|✅|turma do aluno respectivo
+
+```js
+{
+    "nome": "Pedro",
+    "turma": "A"
+}
+```
+
+#### Exemplo da resposta
+
+```js
+{
+    "RM": 1,
+    "nome": "Pedro",
+    "turma": "A"
+}
+```
+
+#### Códigos de Resposta
+
+|código|descrição|
+|------|---------|
+|204| Aluno retornado com sucesso
+|400| Validação falhou. Verifique os dados enviados no corpo da requisição
+|401| Não autorizado. Realize a autenticação em /login
+|404| Não existe categoria com o `id` informado
+
+---
