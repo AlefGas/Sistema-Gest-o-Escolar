@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity
@@ -12,6 +14,8 @@ public class Aluno extends Pessoa {
     private Long rm;
     private double nota;
     private boolean status;
+    @ManyToOne
+    @JoinColumn(name ="Turma_Aluno")
     private Turma turmaAluno;
     private double media;
     private Semestre semestreAluno;
@@ -63,9 +67,44 @@ public class Aluno extends Pessoa {
     public void setSemestreAluno(Semestre semestreAluno) {
         this.semestreAluno = semestreAluno;
     }
+    @Override
+    public String getEmail() {
+        // TODO Auto-generated method stub
+        return super.getEmail();
+    }
+    @Override
+    public String getNome() {
+        // TODO Auto-generated method stub
+        return super.getNome();
+    }
+    @Override
+    public void setEmail(String email) {
+        // TODO Auto-generated method stub
+        super.setEmail(email);
+    }
+    @Override
+    public void setNome(String nome) {
+        // TODO Auto-generated method stub
+        super.setNome(nome);
+    }
+    @Override
+    public boolean equals(Object obj) {
+        // TODO Auto-generated method stub
+        return super.equals(obj);
+    }
+    @Override
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        return super.hashCode();
+    }
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
+    }
 
     
-
+    
 
 
 
