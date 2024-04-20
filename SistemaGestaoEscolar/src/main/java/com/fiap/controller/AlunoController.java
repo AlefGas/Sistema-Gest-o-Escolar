@@ -4,8 +4,6 @@ package com.fiap.controller;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +41,7 @@ public class AlunoController {
     return alunoRepository.save(aluno);
      
     }
-    @GetMapping("{rm}")
+    @GetMapping("{Rm}")
     public ResponseEntity<Aluno> show(@PathVariable Long Rm){
        
      
@@ -68,7 +66,7 @@ public class AlunoController {
     }
   
     
-    @PutMapping("{id}")
+    @PutMapping("{rm}")
      public ResponseEntity<Aluno> update(@PathVariable Long rm, @RequestBody Aluno aluno){
        
          VerificarSeExisteAluno(rm);
