@@ -1,6 +1,6 @@
 package com.fiap.controller;
 
-
+import static org.springframework.http.HttpStatus.*;
 
 import java.util.List;
 
@@ -21,6 +21,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fiap.model.Aluno;
 import com.fiap.repository.AlunoRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/aluno")
 public class AlunoController {
@@ -36,8 +38,8 @@ public class AlunoController {
     }
     
     @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public Aluno CreateAluno(@RequestBody Aluno aluno){    
+    @ResponseStatus(CREATED)
+    public Aluno CreateAluno(@RequestBody @Valid Aluno aluno){    
     return alunoRepository.save(aluno);
      
     }
@@ -53,27 +55,24 @@ public class AlunoController {
     }
 
     @DeleteMapping("{rm}")
-    public ResponseEntity<Object> destroy(@PathVariable Long rm){
+    @ResponseStatus(NO_CONTENT)
+    public void destroy(@PathVariable Long rm){
         
-
-
-        alunoRepository.findById(rm).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe aluno com rm informado"));
-
+        VerificarSeExisteAluno(rm);
 
         alunoRepository.deleteById(rm);
-        return ResponseEntity.noContent().build();
+        
         
     }
   
     
     @PutMapping("{rm}")
-     public ResponseEntity<Aluno> update(@PathVariable Long rm, @RequestBody Aluno aluno){
+     public Aluno update(@PathVariable Long rm, @RequestBody Aluno aluno){
        
          VerificarSeExisteAluno(rm);
 
          aluno.setRm(rm);
-        alunoRepository.save(aluno);
-        return ResponseEntity.ok(aluno);
+        return alunoRepository.save(aluno);
      }
      
     private void VerificarSeExisteAluno(Long rm) {
