@@ -10,13 +10,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Builder
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class Aluno {
     @Id @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long rm;
