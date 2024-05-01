@@ -5,6 +5,9 @@ import static org.springframework.http.HttpStatus.*;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +28,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/aluno")
+@CacheConfig(cacheNames = "Aluno")
 public class AlunoController {
 
     @Autowired
@@ -33,12 +37,14 @@ public class AlunoController {
     
 
     @GetMapping
+    @Cacheable("Alunos")
     public List<Aluno> index() {
         return alunoRepository.findAll();
     }
     
     @PostMapping
     @ResponseStatus(CREATED)
+    @CacheEvict(allEntries = true)
     public Aluno CreateAluno(@RequestBody @Valid Aluno aluno){    
     return alunoRepository.save(aluno);
      
@@ -56,6 +62,7 @@ public class AlunoController {
 
     @DeleteMapping("{rm}")
     @ResponseStatus(NO_CONTENT)
+    @CacheEvict(allEntries = true)
     public void destroy(@PathVariable Long rm){
         
         VerificarSeExisteAluno(rm);
@@ -67,6 +74,7 @@ public class AlunoController {
   
     
     @PutMapping("{rm}")
+    @CacheEvict(allEntries = true)
      public Aluno update(@PathVariable Long rm, @RequestBody Aluno aluno){
        
          VerificarSeExisteAluno(rm);
