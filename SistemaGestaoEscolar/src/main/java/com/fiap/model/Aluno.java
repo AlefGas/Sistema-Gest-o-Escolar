@@ -1,6 +1,5 @@
 package com.fiap.model;
 
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -8,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
@@ -32,14 +32,12 @@ public class Aluno {
     private double nota;
 
     private boolean status;
-    
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "turma_id")
     private Turma turmaAluno;
     @PositiveOrZero
     private double media;
-    @JoinColumn(name ="semestre_Aluno")
     @Enumerated(EnumType.STRING)
-    @Embedded
     private Semestre semestreAluno;
 
 

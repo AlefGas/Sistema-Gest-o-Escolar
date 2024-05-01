@@ -71,7 +71,7 @@ public class AlunoController {
         
         
     }
-  
+
     
     @PutMapping("{rm}")
     @CacheEvict(allEntries = true)
@@ -87,7 +87,7 @@ public class AlunoController {
         alunoRepository
         .findById(rm)
         .orElseThrow(()-> new ResponseStatusException(
-          HttpStatus.NOT_FOUND, "Não existe aluno com rm "));
+          HttpStatus.NOT_FOUND, "Não existe aluno com este rm "));
     }
 
     
