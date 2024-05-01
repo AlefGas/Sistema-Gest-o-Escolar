@@ -29,8 +29,11 @@ public class Aluno {
     @NotBlank(message = "{aluno.email.notblank}")
     private String email;
     @PositiveOrZero
-    private double nota;
-
+    private double nota1;
+    @PositiveOrZero
+    private double nota2;
+    @PositiveOrZero
+    private double nota3;
     private boolean status;
     @ManyToOne
     @JoinColumn(name = "turma_id")
