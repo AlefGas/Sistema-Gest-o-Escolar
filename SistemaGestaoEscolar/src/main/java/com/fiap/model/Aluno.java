@@ -29,17 +29,17 @@ public class Aluno {
     @NotBlank(message = "{aluno.email.notblank}")
     private String email;
     @PositiveOrZero
-    private double nota1;
+    private Double nota1;
     @PositiveOrZero
-    private double nota2;
+    private Double nota2;
     @PositiveOrZero
-    private double nota3;
+    private Double nota3;
     private boolean status;
     @ManyToOne
     @JoinColumn(name = "turma_id")
     private Turma turmaAluno;
     @PositiveOrZero
-    private double media;
+    private Double media;
     @Enumerated(EnumType.STRING)
     private Semestre semestreAluno;
 

@@ -2,6 +2,7 @@ package com.fiap.controller;
 
 import static org.springframework.http.HttpStatus.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fiap.component.NullAwareBeanUtilsBean;
 import com.fiap.model.Aluno;
 import com.fiap.repository.AlunoRepository;
 
@@ -33,7 +36,8 @@ public class AlunoController {
 
     @Autowired
     AlunoRepository alunoRepository;
-
+    @Autowired
+    NullAwareBeanUtilsBean beanUtilsBean;
     
 
     @GetMapping
@@ -73,6 +77,18 @@ public class AlunoController {
     }
 
     
+    @PatchMapping("/nota/{rm}")
+	public Aluno patchUpdate(@RequestBody Aluno aluno, @PathVariable Long rm) throws InvocationTargetException, IllegalAccessException {
+		Aluno alunoEncontrado =  RetornaSeExisteAluno(rm);
+
+		beanUtilsBean.copyProperties(alunoEncontrado, aluno);
+        System.out.println(alunoEncontrado);
+
+		return alunoRepository.save(alunoEncontrado);
+	}
+
+
+    
     @PutMapping("{rm}")
     @CacheEvict(allEntries = true)
      public Aluno update(@PathVariable Long rm, @RequestBody Aluno aluno){
@@ -85,6 +101,13 @@ public class AlunoController {
      
     private void VerificarSeExisteAluno(Long rm) {
         alunoRepository
+        .findById(rm)
+        .orElseThrow(()-> new ResponseStatusException(
+          HttpStatus.NOT_FOUND, "Não existe aluno com este rm "));
+    }
+
+    private Aluno RetornaSeExisteAluno(Long rm) {
+        return alunoRepository
         .findById(rm)
         .orElseThrow(()-> new ResponseStatusException(
           HttpStatus.NOT_FOUND, "Não existe aluno com este rm "));
