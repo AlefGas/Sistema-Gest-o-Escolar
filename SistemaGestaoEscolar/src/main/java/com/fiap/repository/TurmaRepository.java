@@ -7,7 +7,7 @@ import com.fiap.model.Turma;
 
 public interface TurmaRepository extends JpaRepository<Turma, Long> {
 
-    // Page<Turma> findByNomeAndAlunosNome(String turmaAluno, String nome, Pageable pageable);
+    // Page<Aluno> findByNome(String nome, Pageable pageable);
 
     // Page<Turma> findByAlunosNome(String nome, Pageable pageable);
 

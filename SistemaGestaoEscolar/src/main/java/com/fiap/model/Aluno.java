@@ -6,8 +6,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
@@ -35,9 +33,6 @@ public class Aluno {
     @PositiveOrZero
     private Double nota3;
     private boolean status;
-    @ManyToOne
-    @JoinColumn(name = "turma_id")
-    private Turma turmaAluno;
     @PositiveOrZero
     private Double media;
     @Enumerated(EnumType.STRING)
