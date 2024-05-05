@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "80d573d2-5a5b-485b-97c2-d1535c71a1dc",
+		"name": "SistemaGestaoEscolar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30203493"
+	},
+	"item": [
+		{
+			"name": "Aluno",
+			"item": [
+				{
+					"name": "Alunos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/aluno"
+					},
+					"response": []
+				},
+				{
+					"name": "Aluno by Rm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/aluno/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Aluno",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n       \r\n        \"semestreAluno\":\"Semestre1\",\r\n        \"status\":true,\r\n        \"email\":\"alefg2@fiap.com.br\",\r\n        \"nome\":\"alef \",\r\n        \"turmaAluno\":\"INGLES1\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/aluno"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Aluno By Rm",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/aluno/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Aluno By Rm",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n\r\n        \"semestreAluno\":\"Semestre2\",\r\n        \"status\":true,\r\n        \"email\":\"alefg2@fiap.com.br\",\r\n        \"nome\":\"alef alves\",\r\n        \"turmaAluno\":\"INGLES1\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/aluno/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar nota",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n        \"nome\": \"alef \",\r\n        \"email\": \"alefg2@fiap.com.br\",\r\n        \"nota1\": 1.0,\r\n        \"nota2\": 6.0,\r\n        \"nota3\": 8.0,\r\n        \"status\": true,\r\n        \"turmaAluno\": {\r\n            \"id\": 1,\r\n            \"turmaAluno\": \"INGLÊS2\"\r\n        },\r\n        \"media\": 0.0,\r\n        \"semestreAluno\": \"Semestre1\"\r\n        }\r\n\r\n\r\n    \r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/aluno/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Turma",
+			"item": [
+				{
+					"name": "Turma",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/turma"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Turma",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n       \r\n        \"turmaAluno\":\"ESPANHOL1\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/turma"
+					},
+					"response": []
+				},
+				{
+					"name": "Turma by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/turma/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Turma By id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/turma/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Turma By id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n\r\n        \"turmaAluno\":\"INGLES3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/turma/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Aluno em Turma",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n        \"nome\": \"alef \",\r\n        \"email\": \"alefg2@fiap.com.br\",\r\n        \"nota1\": 1.0,\r\n        \"nota2\": 6.0,\r\n        \"nota3\": 8.0,\r\n        \"status\": true,\r\n        \"turmaAluno\": {\r\n            \"id\": 1,\r\n            \"turmaAluno\": \"INGLÊS2\"\r\n        },\r\n        \"media\": 0.0,\r\n        \"semestreAluno\": \"Semestre1\"\r\n        }\r\n\r\n\r\n    \r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/aluno/2"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
