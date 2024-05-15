@@ -9,7 +9,7 @@ import com.fiap.model.Aluno;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
-    Page<Aluno> findByEmail(String email, Pageable pageable);
+    // Page<Aluno> findByEmail(String email, Pageable pageable);
 
     
 }
